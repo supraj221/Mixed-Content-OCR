@@ -54,7 +54,7 @@ pdfplumber detects tables using PDF vector primitives (line segments, rectangles
 - `## Page N _mode_` headers with mode labels (`digital`, `vlm_ocr_strips`, `vlm_ocr_image`) for provenance
 - GitHub-Flavored Markdown pipe tables
 - `<!-- end page N -->` boundary markers for LLM citation grounding
-- Optional JSON output via `--json` flag
+
 
 ---
 
@@ -67,33 +67,30 @@ pdfplumber detects tables using PDF vector primitives (line segments, rectangles
 # Download from: https://github.com/UB-Mannheim/tesseract/wiki
 # Add to PATH after install
 
-
-cd pdf-extraction-pipeline
-python -m venv env
-env\Scripts\activate        # Windows
-# source env/bin/activate   # Mac/Linux
-pip install -r requirements.txt
-```
-
-**Set up API key:**
-```bash
-# Create .env file
-echo MISTRAL_API_KEY=your_key_here > .env
-```
-
-Get a free Mistral API key 
----
-
-## Usage
-
-```bash
-# Mistral OCR engine (recommended)
-python run_pipeline.py report.pdf --engine mistral
-
-# Custom output path
-python run_pipeline.py report.pdf --engine mistral --output my_output.md
-
-```
+1. `python -m venv env`
+ 
+2. Activate the environment:
+   - Windows: `env\Scripts\activate`
+   - Mac/Linux: `source env/bin/activate`
+ 
+3. `pip install -r requirements.txt`
+ 
+4. Install Tesseract binary and add to PATH:
+   - Windows: Download installer from https://github.com/UB-Mannheim/tesseract/wiki — check "Add to PATH" during install
+   - Mac: `brew install tesseract`
+   - Ubuntu: `sudo apt install tesseract-ocr`
+   - Full installation guide: https://tesseract-ocr.github.io/tessdoc/Installation.html
+ 
+5. Add your Mistral API key to a `.env` file:
+   ```
+   MISTRAL_API_KEY=your_key_here
+   ```
+   Get a free Mistral API key at [console.mistral.ai](https://console.mistral.ai)
+ 
+6. Run:
+   ```bash
+   python run_pipeline.py report.pdf
+   ```
 
 ---
 
